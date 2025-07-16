@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ניהול משתמשים</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>ניהול משתמשים</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>שם משתמש</th>
+        <th>מאושר?</th>
+        <th>פעולות</th>
+      </tr>
+    </thead>
+    <tbody id="usersTable"></tbody>
+  </table>
+
+  <h3>הוסף משתמש חדש</h3>
+  <input id="newUser" placeholder="שם משתמש">
+  <input id="newPass" placeholder="סיסמה" type="password">
+  <button onclick="addUser()">הוסף</button>
+
+  <script src="admin.js"></script>
+</body>
+</html>
