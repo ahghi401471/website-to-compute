@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>בוט ניתוח סוכר</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניתוח נתוני סוכרת</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🔍 ניתוח נתוני סוכרת מ-Nightscout</h1>
+    <h1>ברוך הבא למערכת ניתוח נתונים</h1>
+    <form id="tokenForm">
+        <label for="nsUrl">קישור ל-Nightscout:</label>
+        <input type="text" id="nsUrl" placeholder="https://example.com">
 
-  <label for="url">הכנס/י כתובת Nightscout:</label>
-  <input type="text" id="url" placeholder="https://example.herokuapp.com" size="40">
-  <button onclick="analyze()">נתח את הנתונים</button>
+        <label for="token">אסימון קריאה:</label>
+        <input type="text" id="token" placeholder="הזן אסימון קריאה">
 
-  <h2>📊 תוצאה:</h2>
-  <pre id="result">...</pre>
+        <button type="submit">טען נתונים</button>
+    </form>
 
-<script src="public/script.js"></script>
+    <div id="dataSection" style="display:none;">
+        <h2>נתונים אחרונים</h2>
+        <div id="tableContainer"></div>
 
+        <button id="analyzeButton">בצע ניתוח חכם</button>
+        <div id="analysisResult"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
