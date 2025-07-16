@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ניתוח נתוני סוכרת</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניתוח נתוני סוכר</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ברוך הבא למערכת ניתוח נתונים</h1>
+  <div class="container">
+    <h1>ברוך הבא! הזן את פרטי הגישה שלך</h1>
+
     <form id="tokenForm">
-        <label for="nsUrl">קישור ל-Nightscout:</label>
-        <input type="text" id="nsUrl" placeholder="https://example.com">
+      <label for="nsUrl">כתובת אתר Nightscout:</label>
+      <input type="text" id="nsUrl" placeholder="https://example.com" required>
 
-        <label for="token">אסימון קריאה:</label>
-        <input type="text" id="token" placeholder="הזן אסימון קריאה">
+      <label for="token">אסימון קריאה:</label>
+      <input type="text" id="token" placeholder="הזן אסימון קריאה כאן" required>
 
-        <button type="submit">טען נתונים</button>
+      <button type="submit">טען נתונים</button>
     </form>
 
     <div id="dataSection" style="display:none;">
-        <h2>נתונים אחרונים</h2>
-        <div id="tableContainer"></div>
+      <h2>תוצאות ניתוח</h2>
+      <div id="tableContainer"></div>
 
-        <button id="analyzeButton">בצע ניתוח חכם</button>
-        <div id="analysisResult"></div>
+      <button id="analyzeButton">בצע ניתוח חכם</button>
+      <div id="analysisResult"></div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
