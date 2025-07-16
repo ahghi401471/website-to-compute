@@ -1,10 +1,17 @@
 [
   {
     "username": "hagai",
-    "password": "0504103150"
+    "password": "0504103150",
+    "approved": true
   },
   {
     "username": "admin",
-    "password": "secret"
+    "password": "secret",
+    "approved": true
+  },
+  {
+    "username": "user1",
+    "password": "123456",
+    "approved": false
   }
 ]
