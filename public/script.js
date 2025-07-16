@@ -1,3 +1,6 @@
+if (localStorage.getItem("isLoggedIn") !== "true") {
+  window.location.href = "login.html";
+}
 document.getElementById("tokenForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
