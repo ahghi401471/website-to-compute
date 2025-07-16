@@ -1,14 +1,19 @@
-async function analyze() {
-  const url = document.getElementById("url").value;
-  const resultBox = document.getElementById("result");
+document.getElementById("tokenForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nsUrl = document.getElementById("nsUrl").value.trim();
+  const token = document.getElementById("token").value.trim();
+  const resultBox = document.getElementById("analysisResult");
+  const dataSection = document.getElementById("dataSection");
+
   resultBox.textContent = "טוען נתונים...";
 
   try {
-    const response = await fetch(`${url}/api/v1/entries.json?count=50`);
+    const response = await fetch(`${nsUrl}/api/v1/entries.json?count=100&token=${token}`);
     const data = await response.json();
 
     if (!data.length) {
-      resultBox.textContent = "לא נמצאו נתונים";
+      resultBox.textContent = "לא נמצאו נתונים.";
       return;
     }
 
@@ -20,13 +25,17 @@ async function analyze() {
     const inRange = values.length - high - low;
 
     resultBox.textContent = `
-מספר קריאות: ${values.length}
-ממוצע: ${avg}
-באזור תקין (70–180): ${(inRange / values.length * 100).toFixed(1)}%
-היפר (>180): ${(high / values.length * 100).toFixed(1)}%
-היפו (<70): ${(low / values.length * 100).toFixed(1)}%
+    ✅ מספר קריאות: ${values.length}
+    🎯 ממוצע: ${avg}
+    🌿 בטווח (70-180): ${(inRange / values.length * 100).toFixed(1)}%
+    🔺 מעל 180: ${(high / values.length * 100).toFixed(1)}%
+    🔻 מתחת 70: ${(low / values.length * 100).toFixed(1)}%
     `;
+
+    dataSection.style.display = "block";
+
   } catch (error) {
-    resultBox.textContent = "שגיאה בטעינת הנתונים. בדקי שהכתובת נכונה.";
+    resultBox.textContent = "❌ שגיאה בטעינת הנתונים. ודא שהכתובת והטוקן נכונים.";
   }
-}
+});
+
