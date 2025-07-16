@@ -1,12 +1,22 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+const authorizedUsers = [
+  { username: "hagai", password: "0504103150" },
+  { username: "admin", password: "secret" }
+];
 
-  const approvedUsers = ["user123", "dina456", "admin001"]; // כאן תכניס את המשתמשים שאתה מאשר
-  const userId = document.getElementById("userId").value.trim();
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  if (approvedUsers.includes(userId)) {
-    window.location.href = "dashboard.html"; // תשנה ליעד שלך אחרי התחברות
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  const user = authorizedUsers.find(
+    u => u.username === username && u.password === password
+  );
+
+  if (user) {
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "index.html";
   } else {
-    document.getElementById("accessDenied").style.display = "block";
+    alert("שם משתמש או סיסמה שגויים.");
   }
 });
